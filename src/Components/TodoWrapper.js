@@ -13,12 +13,17 @@ import { v4 as uuidv4 } from "uuid";
         ]);
     }
 
+    const toggelComplete = id =>{
+        setTodos(todos.map(todo => todo.id === id ? 
+            {...todo, completed: !todo.completed} : todo))
+    }
+
     return (
     <div className="TodoWrapper">
         <h1>Get Things Done !</h1>
         <TodoForm addTodo={addTodo} />
       {/* display todos */}
-        {todos.map((todo) =>(<Todo key={todo.id} task={todo}/>
+        {todos.map((todo) =>(<Todo key={todo.id} task={todo} toggelComplete={toggelComplete}/>
         )
     )}
     </div>
